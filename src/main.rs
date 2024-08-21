@@ -7,7 +7,7 @@ struct Person;
 struct Name(String);
 
 #[derive(Component)]
-struct Id;
+struct Idd;
 
 fn hello_world() {
     println!("hello world!");
