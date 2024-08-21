@@ -6,6 +6,9 @@ struct Person;
 #[derive(Component)]
 struct Name(String);
 
+#[derive(Component)]
+struct Id;
+
 fn hello_world() {
     println!("hello world!");
 }
