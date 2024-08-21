@@ -9,6 +9,15 @@ struct Name(String);
 #[derive(Component)]
 struct Idd;
 
+pub struct HelloPlugin;
+
+impl Plugin for HelloPlugin {
+    fn build(&self, app: &mut App) {
+        app.add_systems(Startup, add_people);
+        app.add_systems(Update, (update_people, greet_people).chain());
+    }
+}
+
 fn hello_world() {
     println!("hello world!");
 }
@@ -39,7 +48,6 @@ fn update_people(mut query: Query<&mut Name, With<Person>>) {
 fn main() {
     App::new()
         .add_plugins(DefaultPlugins)
-        .add_systems(Startup, add_people)
-        .add_systems(Update, (hello_world, (update_people, greet_people).chain()))
+        .add_plugins(HelloPlugin)
         .run();
 }
